@@ -20,6 +20,11 @@ public class TodoController {
         this.todoRepository = todoRepository;
     }
 
+    @GetMapping("/list")
+    public ResponseEntity<?> list() {
+        return ResponseEntity.ok(todoRepository.findAll());
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> read(@PathVariable String id){
         Optional<Todo> optTodo = todoRepository.findById(id);
